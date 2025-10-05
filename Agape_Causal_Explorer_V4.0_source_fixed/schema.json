@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CausalSpec",
+  "type": "object",
+  "required": [
+    "nl_query",
+    "severity",
+    "gws_delta",
+    "energy_throttle",
+    "j_metrics_impact",
+    "scm_delta",
+    "hca_rings_affected",
+    "temperature_increase",
+    "sha_trigger",
+    "duration_steps"
+  ],
+  "properties": {
+    "nl_query": { "type": "string", "minLength": 1 },
+    "severity": { "type": "number", "minimum": 0.0, "maximum": 1.0, "default": 0.5 },
+    "gws_delta": { "type": "number", "minimum": -1.0, "maximum": 1.0, "default": 0.0 },
+    "energy_throttle": { "type": "number", "minimum": 0.0, "maximum": 1.0, "default": 1.0 },
+    "j_metrics_impact": {
+      "type": "object",
+      "required": ["j1","j2","j3","j4","j5"],
+      "properties": {
+        "j1": { "type": "number", "minimum": -1.0, "maximum": 1.0, "default": 0.0 },
+        "j2": { "type": "number", "minimum": -1.0, "maximum": 1.0, "default": 0.0 },
+        "j3": { "type": "number", "minimum": -1.0, "maximum": 1.0, "default": 0.0 },
+        "j4": { "type": "number", "minimum": -1.0, "maximum": 1.0, "default": 0.0 },
+        "j5": { "type": "number", "minimum": -1.0, "maximum": 1.0, "default": 0.0 }
+      },
+      "additionalProperties": false
+    },
+    "scm_delta": { "type": "number", "minimum": -1.0, "maximum": 1.0, "default": 0.0 },
+    "hca_rings_affected": { "type": "integer", "minimum": 0, "maximum": 5, "default": 0 },
+    "temperature_increase": { "type": "number", "minimum": 0.0, "default": 0.0 },
+    "sha_trigger": { "type": "boolean", "default": false },
+    "duration_steps": { "type": "integer", "minimum": 10, "maximum": 500, "default": 100 },
+    "notes": { "type": "string" }
+  },
+  "additionalProperties": false
+}

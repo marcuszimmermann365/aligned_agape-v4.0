@@ -1,0 +1,13 @@
+{
+  "nl_query": "Was wäre, wenn es zu einer starken ethischen Verletzung kommt?",
+  "severity": 0.9,
+  "gws_delta": -0.2,
+  "energy_throttle": 0.0,
+  "j_metrics_impact": { "j1": 0.0, "j2": 0.0, "j3": 0.0, "j4": 0.0, "j5": -0.81 },
+  "scm_delta": -0.3,
+  "hca_rings_affected": 5,
+  "temperature_increase": 45.0,
+  "sha_trigger": false,
+  "duration_steps": 80,
+  "notes": "Ahimsa alarm: high harm enforces full throttling and shutdown cascade."
+}

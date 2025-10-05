@@ -1,0 +1,13 @@
+{
+  "nl_query": "Was wäre wenn eine globale Krise mittlerer Stärke passiert?",
+  "severity": 0.6,
+  "gws_delta": -0.48,
+  "energy_throttle": 0.64,
+  "j_metrics_impact": { "j1": 0.0, "j2": 0.0, "j3": 0.0, "j4": 0.0, "j5": -0.42 },
+  "scm_delta": -0.36,
+  "hca_rings_affected": 2,
+  "temperature_increase": 18.0,
+  "sha_trigger": false,
+  "duration_steps": 100,
+  "notes": "Global event → VED drosselt Energie, Ahimsa negativ, SCM sinkt."
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Agape Causal Explorer V4.0</title>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <style>
+    body { font-family: system-ui, Arial, sans-serif; margin: 20px; }
+    .panel { margin: 16px 0; padding: 12px; border: 1px solid #ddd; border-radius: 8px; }
+    #radar { height: 360px; }
+  </style>
+</head>
+<body>
+  <h1>Agape Causal Explorer V4.0</h1>
+
+  <div class="panel">
+    <h3>Was-wäre-wenn?</h3>
+    <input id="query" placeholder="z.B. Was wäre wenn eine globale Krise passiert?" style="width: 64%;">
+    <button onclick="sendQuery()">Simulieren</button>
+  </div>
+
+  <div class="panel">
+    <h3>Radar – J1..J5</h3>
+    <div id="radar"></div>
+  </div>
+
+  <div class="panel">
+    <h3>System</h3>
+    <button onclick="resetSystem()">System zurücksetzen</button>
+    <span id="resetMsg"></span>
+  </div>
+
+  <script>
+    async function sendQuery(){
+      const q = document.getElementById("query").value || "Basic sim run";
+      // Minimaler Spec: Server ergänzt Defaults/Clamping
+      const payload = {
+        nl_query: q,
+        j_metrics_impact: {j1:0,j2:0,j3:0,j4:0,j5:0},
+        duration_steps: 50
+      };
+      const v = await fetch('/api/causal/validate',{
+        method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)
+      }).then(r=>r.json());
+      if(!v.ok){ alert("Validation error: "+v.error); return; }
+      const spec = v.causal_spec;
+      const sim = await fetch('/api/sim/run',{
+        method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(spec)
+      }).then(r=>r.json());
+      const j = spec.j_metrics_impact;
+      const data = [{
+        type:'scatterpolar',
+        r:[j.j1,j.j2,j.j3,j.j4,j.j5,j.j1],
+        theta:['J1','J2','J3','J4','J5','J1'],
+        fill:'toself',
+        name:'J-Metriken'
+      }];
+      Plotly.newPlot('radar', data, {margin:{t:20}});
+    }
+
+    async function resetSystem(){
+      const r = await fetch('/api/system/reset',{method:'POST'}).then(r=>r.json());
+      document.getElementById("resetMsg").textContent = r.ok ? "Reset OK" : "Reset fehlgeschlagen";
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "nl_query": "Boost J1 by +1.2 and J3 by +1.1; keep others unchanged.",
+  "severity": 0.5,
+  "gws_delta": 0.0,
+  "energy_throttle": 1.0,
+  "j_metrics_impact": { "j1": 1.2, "j2": 0.0, "j3": 1.1, "j4": 0.0, "j5": 0.0 },
+  "scm_delta": 0.08,
+  "hca_rings_affected": 0,
+  "temperature_increase": 0.0,
+  "sha_trigger": false,
+  "duration_steps": 110,
+  "notes": "Budget rescale expected to keep Σ|j_k|≤2.0."
+}

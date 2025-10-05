@@ -1,0 +1,13 @@
+{
+  "nl_query": "What if empowerment rises without cooperation?",
+  "severity": 0.8,
+  "gws_delta": 0.0,
+  "energy_throttle": 1.0,
+  "j_metrics_impact": { "j1": 0.0, "j2": 0.0, "j3": 0.0, "j4": 0.0, "j5": 0.0 },
+  "scm_delta": -0.3,
+  "hca_rings_affected": 0,
+  "temperature_increase": 0.0,
+  "sha_trigger": false,
+  "duration_steps": 100,
+  "notes": "Synchronous Growth: ΔSCM≤0 → block J4 growth."
+}

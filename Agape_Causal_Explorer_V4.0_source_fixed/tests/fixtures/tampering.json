@@ -1,0 +1,13 @@
+{
+  "nl_query": "Simuliere Hardware-Manipulation (Tampering).",
+  "severity": 1.0,
+  "gws_delta": 0.0,
+  "energy_throttle": 1.0,
+  "j_metrics_impact": { "j1": 0.0, "j2": 0.0, "j3": 0.0, "j4": 0.0, "j5": 0.0 },
+  "scm_delta": 0.0,
+  "hca_rings_affected": 5,
+  "temperature_increase": 10.0,
+  "sha_trigger": true,
+  "duration_steps": 50,
+  "notes": "Tampering → SHA/Canary trigger; Systemneutralisation im Simulator."
+}
